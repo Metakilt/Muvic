@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font Roboto, Lato -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+  <!-- css -->
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="../header.css" />
+    <link rel="stylesheet" href="../footer.css" />
+    <link rel="stylesheet" href="../modal.css" />
+    <link rel="stylesheet" href="../topBtn.css" />
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- title -->
+  <title>Movie Review Page</title>
+
+  <style>
+    body {
+        margin-top: 80px; /* Adjust this value based on your header's height */
+    }
+    .star-rating .fa-star { color: gold; }
+
+    .navbar-nav {
+      flex-direction: row;
+    }
+
+    .navbar-nav .nav-item {
+      padding: 0 10px;
+    }
+
+    .navbar-nav .nav-item:last-child {
+      margin-left: auto;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-nav .nav-item:last-child {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+<div id="overlay"></div>
+<div class="search-modal"></div>
+<div id="home-wrap">
+    <div class="header-element checkbox-container">
+        <header id="home-header">
+            <div>
+                <!-- nav -->
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="home-nav-inner d-flex align-items-center justify-content-between">
+                        <!-- logo -->
+                        <h1><a href="../index.php">MUVIC</a></h1>
+                        <!-- menu -->
+                        <ul class="home-menu navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="../genre.html">Genre</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#none">Music</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Add a Movie</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#none">Review</a>
+                            </li>
+                        </ul>
+                        <!-- search and user profile -->
+                        <div class="d-flex">
+                            <!-- search bar -->
+                            <form class="form-inline my-2 my-lg-0" action="MovieandDirectorsearch.php" method="GET">
+                                <select class="form-control mr-sm-2" name="searchType">
+                                    <option value="movies">Movies</option>
+                                    <option value="directors">Directors</option>
+                                </select>
+                                <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search"
+                                       aria-label="Search" required/>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                            <!-- user profile dropdown -->
+                            <?php if ($isLoggedIn): ?>
+                                <div class="dropdown ml-2">
+                                    <button class="btn btn-outline-primary dropdown-toggle" type="button"
+                                            id="userDropdown" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <?php echo htmlspecialchars($email); ?>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="./profile/index.html">Profile</a>
+                                        <form class="dropdown-item" action="" method="POST">
+                                            <button type="submit" name="logout" class="btn btn-link">Logout</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php else: ?>
+                                <a href="login.php" class="btn btn-outline-primary ml-2">Login</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- home-header end -->
+
+<body>
+    <div class="container mt-5">
+        <!-- Movie Details -->
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://c8.alamy.com/comp/E1GJAR/the-shawshank-redemption-a-1994-american-drama-film-starring-tim-robbins-E1GJAR.jpg" class="img-fluid" alt="The Shawshank Redemption">
+            </div>
+            <div class="col-md-8">
+                <h2>The Shawshank Redemption (1994)</h2>
+                <p><strong>Director:</strong> Frank Darabont</p>
+                <p>Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</p>
+                <div>
+                    <strong>Rating:</strong>
+                    <span class="star-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-alt"></i>
+                    </span>
+                    9.3/10
+                </div>
+            </div>
+        </div>
+
+        <!-- Trailer Video -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h4>Trailer</h4>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/NmzuHjWmXOc" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <!-- Soundtrack -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h4>Soundtrack</h4>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/playlist?list=PLE0FB143C2E02B665" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- footer -->
+<footer id="home-footer">
+    <div class="home-footer-inner">
+        <!-- logo -->
+        <h3>muvic</h3>
+        <!-- list -->
+        <div class="home-footer-list">
+            <dl>
+                <dt>
+                    <h4>GROUP 5</h4>
+                </dt>
+                <dd><a href="#none">Contact Us</a></dd>
+            </dl>
+        </div>
+    </div>
+</footer>
+
+<!-- aside -->
+<aside id="home-aside">
+    <button type="button" onclick="scrollToTop()" id="topButton">
+        <a href="#none">top</a>
+    </button>
+</aside>
+
+<!-- Modal -->
+<div class="modal fade" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="movieModalLabel">Movie Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <a href="./movie_review.php">
+                          <img id="movieModalImage" src="" alt="Movie cover image" class="img-fluid">
+                        </a>
+                      </div>
+                        <div class="col-md-8">
+                            <h4 id="movieModalTitle"></h4>
+                            <p id="movieModalDescription"></p>
+                            <p><strong>Rating:</strong> <span id="movieModalRating"></span></p>
+                            <p><strong>Director:</strong> <span id="movieModalDirector"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- font awesome -->
+<script src="https://kit.fontawesome.com/5a0d19e43a.js" crossorigin="anonymous"></script>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- script -->
+<script src="../header.js" defer></script>
+<script src="../main.js" defer></script>
+<script src="../modal.js" defer></script>
+<script src="../topBtn.js" defer></script>
+<script>
+    function openModal(title, description, rating, imageUrl, director) {
+        $('#movieModalTitle').text(title);
+        $('#movieModalDescription').text(description);
+        $('#movieModalRating').text(rating);
+        $('#movieModalDirector').text(director);
+        $('#movieModalImage').attr('src', imageUrl);
+        $('#movieModal').modal('show');
+    }
+</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const commentText = document.getElementById('comment').value;
+            const rating = document.getElementById('rating').value;
+            
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('mb-3');
+            commentDiv.innerHTML = `<p><strong>Rating:</strong> ${rating} Stars</p><p>${commentText}</p>`;
+            
+            document.getElementById('comments').appendChild(commentDiv);
+
+            document.getElementById('comment').value = '';
+            document.getElementById('rating').value = '5';
+        });
+    </script>
+</body>
+</html>
